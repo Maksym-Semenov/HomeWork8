@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace HomeWork8
 {
@@ -10,23 +11,17 @@ namespace HomeWork8
         {
             this.name = name;
         }
-       
-        public virtual double Area(double a)
-        {
-            return a;
-        }
-        public virtual double Perimeter(double a)
-        {
-            return a;
-        }
+        public abstract double Area();
+        public abstract double Perimeter();
         public virtual void Print()
         {
             Console.WriteLine(name);
         }
-
         public int CompareTo(object obj)
         {
-            throw new NotImplementedException();
+            var thisArea = Perimeter();
+            var objArea = (obj as Shape).Perimeter();
+            return thisArea.CompareTo(objArea);
         }
     }
 }

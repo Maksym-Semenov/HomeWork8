@@ -2,26 +2,27 @@
 
 namespace HomeWork8
 {
-    internal class Circle : Shape,IComparable<Circle>
+    internal class Circle : Shape
     {
         private double radius;
         private double area;
+        private double perimeter;
         public double Radius { get { return radius; } set { radius = value; } }
-        public Circle(string name) : base(name)
+        public Circle(string name, double radius) : base(name)
         {
+            this.radius = radius;
         }
-        public override double Area(double radius)
+        public override double Area()
         {
-            area = Math.Round((Math.PI * Math.Pow(radius, 2)), 2);
-            return area;
+            return area = Math.Round((Math.PI * Math.Pow(radius, 2)), 2);
+        }
+        public override double Perimeter()
+        {
+            return perimeter = Math.Round((2 * Math.PI * radius), 2);
         }
         public override void Print()
         {
-            Console.WriteLine($"Circle's name is {Name}, Area = {area}");
-        }
-        public int CompareTo(Circle other)
-        {
-            throw new NotImplementedException();
+            Console.WriteLine($"Circle's name is {Name}, Perimeter is {perimeter}, Area = {area}");
         }
     }
 }

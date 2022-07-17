@@ -2,26 +2,27 @@
 
 namespace HomeWork8
 {
-    internal class Square : Shape,IComparable<Square>
+    internal class Square : Shape
     {
         private double side;
+        private double area;
         private double perimeter;
         public double Side { get { return side; } set { side = value; } }
-        public Square(string name) : base(name)
+        public Square(string name, double side) : base(name)
         {
+            this.side = side;
         }
-        public override double Perimeter(double side)
+        public override double Area()
         {
-            perimeter = (4 * side);
-            return perimeter;
+            return area = (Math.Pow(side, 2));
+        }
+        public override double Perimeter()
+        {
+            return perimeter = side*4;
         }
         public override void Print()
         {
-            Console.WriteLine($"Square's name is {Name}, Perimeter is {perimeter}");
-        }
-        public int CompareTo(Square other)
-        {
-            throw new NotImplementedException();
+            Console.WriteLine($"Square's name is {Name}, Perimeter is {perimeter}, Area is {area}");
         }
     }
 }
