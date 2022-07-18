@@ -1,11 +1,12 @@
-﻿using System;
+﻿﻿using System;
 using System.Collections.Generic;
 
 namespace HomeWork8
 {
-    internal abstract class Shape : IComparable
+    internal abstract class Shape : IComparable<Shape>
     {
         private string name;
+
         public string Name { get { return name; } set { name = value; } }
         public Shape(string name)
         {
@@ -13,15 +14,12 @@ namespace HomeWork8
         }
         public abstract double Area();
         public abstract double Perimeter();
-        public virtual void Print()
+        public abstract void Print();
+        public int CompareTo(Shape s)
         {
-            Console.WriteLine(name);
-        }
-        public int CompareTo(object obj)
-        {
-            var thisArea = Perimeter();
-            var objArea = (obj as Shape).Perimeter();
-            return thisArea.CompareTo(objArea);
+            if (s != null)
+                return Area().CompareTo(s.Area());
+            else throw new Exception("Uncorrect shape");
         }
     }
 }
